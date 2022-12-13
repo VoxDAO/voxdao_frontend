@@ -1,0 +1,31 @@
+@import '@/styles/mixins.scss';
+
+#ProjectSection {
+  max-width: $width-container;
+  margin: 0 auto 380px auto;
+  font-family: 'Glow Sans SC';
+  -webkit-font-smoothing: antialiased;
+
+  @media screen and (max-width: 550px) {
+    margin: 0 auto 300px auto;
+  }
+}
+
+.projects-desc {
+  @include desc-left;
+  @include font-main-body;
+  margin-top: 30px;
+  margin-bottom: 86px;
+  @media screen and (max-width: 550px) {
+    margin-bottom: 20px;
+  }
+}
+
+.case_card_list {
+  padding-left: 0 !important;
+  list-style: none;
+  margin-top: 40px;
+  @media screen and (max-width: 550px) {
+    margin-top: 20px;
+  }
+}

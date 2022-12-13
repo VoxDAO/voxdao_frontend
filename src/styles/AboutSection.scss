@@ -1,0 +1,54 @@
+@import '@/styles/mixins.scss';
+@import '@/styles/variables.scss';
+
+#AboutSection {
+  max-width: $width-container;
+  margin: 0 auto 380px auto;
+  font-family: 'Glow Sans SC';
+  -webkit-font-smoothing: antialiased;
+  text-align: center;
+  @media screen and (max-width: 550px) {
+    margin: 0 auto 300px auto;
+  }
+}
+
+.aboutus-desc {
+  margin-top: 30px;
+  @include font-main-body;
+
+  span {
+    @include gradient;
+  }
+
+}
+
+.contact-button {
+  width: 358px;
+  height: 65px;
+  background: linear-gradient(95.47deg, #0157ff 0%, #3d84c6 100%);
+  border-radius: 20px;
+  color: #ffffff;
+  margin-top: 60px;
+
+  @media screen and (max-width: 550px) {
+    width: calc(100% - 48px);
+    margin: 64px 24px 0 24px;
+    height: 48px;
+  }
+}
+
+.pages-flex-social-items {
+  display: flex;
+  width: 100%;
+  margin-top: 20px;
+  @media screen and (max-width: 550px) {
+  }
+  a {
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+  }
+}

@@ -1,0 +1,67 @@
+@import './variables.scss';
+
+@mixin gradient {
+  background: $blue-gradient;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin font-main-body {
+  font-family: 'Glow Sans SC';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: 0.08em;
+  color: #DFDFE6;
+  
+  @media screen and (max-width: 550px) {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.04em;
+  }
+}
+
+@mixin font-body {
+  font-family: 'Glow Sans SC';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  color: #FFFFFF;
+  
+  @media screen and (max-width: 550px) {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+  }
+}
+
+@mixin title {
+  font-family: 'Glow Sans SC';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 64px;
+  @include gradient;
+
+  @media screen and (max-width: 550px) {
+    font-size: 30px;
+    line-height: 43px;
+    margin: 0 10px;
+  }
+}
+
+@mixin desc-left {
+  margin-right: 21.07%;
+  // @media screen and (min-width: 1921px) {
+  //     margin-right: 19.18%;
+  // }
+}
+
+.left-header-title {
+  @include gradient;
+  @include title;
+}
+

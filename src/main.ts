@@ -1,14 +1,27 @@
-import { createApp } from "vue";
-import { createPinia } from "pinia";
+/**
+ * Vue3 Main script
+ */
 
-import App from "./App.vue";
-import router from "./router";
+// Load vue core
+import { createApp } from 'vue';
+import router from './router';
+import store from './store';
 
-import "./assets/main.css";
+// Load Vuetify
+import vuetify from './plugins/vuetify';
 
-const app = createApp(App);
+// Load Layout vue.
+import App from './App.vue';
+import '@/styles/variables.scss';
+import '@/styles/mixins.scss';
 
-app.use(createPinia());
-app.use(router);
+/** Register Vue */
+const vue = createApp(App);
+vue.use(router);
+vue.use(store);
+vue.use(vuetify);
 
-app.mount("#app");
+// Run!
+router.isReady().then(() => {
+  vue.mount('#app');
+});

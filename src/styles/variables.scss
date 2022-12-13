@@ -1,0 +1,72 @@
+$body-font-family: 'Glow Sans SC';
+$heading-font-family: 'Glow Sans SC';
+$blue-gradient: linear-gradient(96.06deg, #0066FF 0%, #00C2FF 39.56%);
+
+$width-container: 968px;
+$width-container-wide: 2078px;
+
+// @font-face {
+//   font-family: 'Glow Sans SC';
+//   src: url('https://fonts.cytelab.net/GlowSansSC-Normal-Regular.woff2') format('woff2'),
+//     url('https://fonts.cytelab.net/GlowSansSC-Normal-Regular.woff') format('woff'),
+//     url('https://fonts.cytelab.net/GlowSansSC-Normal-Regular.otf') format('otf');
+//   font-weight: 600;
+//   font-style: normal;
+// }
+
+@font-face {
+  font-family: 'Glow Sans SC';
+  src: url("/font/GlowSansSC-Normal-Regular-subset.woff2") format("woff2"), url("/font/GlowSansSC-Normal-Regular-subset.woff") format("woff"), url("/font/GlowSansSC-Normal-Regular-subset.otf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Glow Sans SC';
+  src: url("/font/GlowSansSC-Normal-ExtraBold-subset.woff2") format("woff2"), url("/font/GlowSansSC-Normal-ExtraBold-subset.woff") format("woff"), url("/font/GlowSansSC-Normal-ExtraBold-subset.otf") format("truetype");
+  // src: url("/font/GlowSansSC-Normal-ExtraBold.otf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Glow Sans SC';
+  src: url('https://fonts.cytelab.net/GlowSansSC-Normal-ExtraLight.woff2') format('woff2'),
+    url('https://fonts.cytelab.net/GlowSansSC-Normal-ExtraLight.woff') format('woff'),
+    url('https://fonts.cytelab.net/GlowSansSC-Normal-ExtraLight.otf') format('otf');
+  font-weight: 400;
+  font-style: light;
+}
+
+.gradient {
+  background: $blue-gradient;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 模块的居中样式 */
+#ContactSection,
+#ProjectSection,
+#MorePartners {
+  max-width: $width-container;
+  margin: auto;
+  font-family: 'Glow Sans SC';
+  -webkit-font-smoothing: antialiased;
+}
+
+// Fix for monospace Font.
+code,
+kbd,
+pre,
+samp,
+var {
+  font-family: 'Roboto Mono', monospace;
+}
+
+.desc-text-margin {
+  @media screen and (max-width: 550px) {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+  }
+}

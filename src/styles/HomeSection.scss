@@ -1,0 +1,116 @@
+#HomeSection {
+  background-color: #f4f7f5;
+  background: transparent;
+  width: 100%;
+  margin: auto;
+  align-items: center;
+  height: 100vh;
+  /* margin: auto; */
+  display: flex;
+  justify-content: center;
+  transform: translateY(-128px);
+}
+a:-webkit-any-link {
+  cursor: pointer;
+  text-decoration:none;
+}
+.container-box {
+  text-align: center;
+}
+
+.home-container-content {
+  font-family: 'Glow Sans SC';
+  font-size: 36px;
+  line-height: 52px;
+  padding: 0px 21px;
+  color: #ffffff;
+  text-align: justify;
+  text-align-last: justify;
+}
+
+.container-title {
+  text-align: center;
+  font-size: 180px;
+  font-family: 'Glow Sans SC';
+  font-weight: 700;
+
+  img {
+    height: 200px;
+    max-width: 94vw;
+  }
+}
+
+.home-subtitle {
+  // margin-top: 110px;
+  font-family: 'Glow Sans SC';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 68px;
+  line-height: 200px;
+  color: #d9d9d9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-content {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  /* or 150% */
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+span {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media screen and (max-width: 550px) {
+  .container-title {
+    text-align: center;
+    font-size: 70px;
+
+    // img {
+    //   height: 64px;
+    // }
+  }
+
+  .home-subtitle {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  .home-container-content {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 35px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: #ffffff;
+  }
+
+  #keyfont {
+    background: linear-gradient(96.06deg, #0066ff 0%, #00c2ff 39.56%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.contact-button {
+  width: 358px;
+  height: 65px;
+  background: linear-gradient(95.47deg, #0157ff 0%, #3d84c6 100%);
+  border-radius: 20px;
+  color: #ffffff;
+  margin-top: 60px;
+
+  @media screen and (max-width: 550px) {
+    width: calc(100% - 48px);
+    margin: 64px 24px 0 24px;
+    height: 48px;
+  }
+}

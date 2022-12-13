@@ -1,0 +1,195 @@
+kind: pipeline
+type: docker
+name: test
+platform:
+  arch: amd64
+trigger:
+  event:
+    include:
+      - push
+    exclude:
+      - pull_request
+  branch:
+    - main
+    - dev
+
+steps:
+  - name: build-Start-send
+    image: plugins/webhook
+    ignore_error: true
+    settings:
+      urls: https://open.feishu.cn/open-apis/bot/v2/hook/29518279-847e-4005-8267-f62b99952a0b
+      content_type: application/json
+      template:
+        msg_type: post
+        content:
+          post:
+            zh_cn:
+              title: |
+                build #${DRONE_BUILD_NUMBER} Start.
+              content:
+                - - { tag: a, text: 'build log', href: '${DRONE_BUILD_LINK}' }
+                - - {
+                      tag: a,
+                      text: '${DRONE_REPO_NAME}',
+                      href: '${DRONE_COMMIT_LINK}',
+                    }
+                  - { tag: a, text: /, href: '${DRONE_COMMIT_LINK}' }
+                  - {
+                      tag: a,
+                      text: '${DRONE_COMMIT_BRANCH}',
+                      href: '${DRONE_COMMIT_LINK}',
+                    }
+                - - { tag: text, text: 'commit by ${DRONE_COMMIT_AUTHOR}' }
+
+  - name: restore-cache
+    image: drillster/drone-volume-cache
+    volumes:
+      - name: cache
+        path: /cache
+    settings:
+      restore: true
+      mount:
+        - ./node_modules
+
+  - name: build-test
+    image: lafish/builder
+    commands:
+      - yarn
+      - yarn build
+      - ls
+      #SjPCH8kuZ9vxxnBk33nUVaU
+      # - rsync -ratlz --delete --rsh="/usr/bin/sshpass -p SjPCH8kuZ9vxxnBk33nUVaU ssh -o StrictHostKeyChecking=no -l root" ./dist root@104.160.19.13:/var/www/mid
+      - rsync -ratlz --delete --rsh="/usr/bin/sshpass -p aaaa5451 ssh -o StrictHostKeyChecking=no -l root" ./dist/ root@192.169.0.174:/var/www/mainpage
+    depends_on:
+      - restore-cache
+    when:
+      branch:
+        - main
+      event:
+        - push
+
+  - name: build-dev
+    image: lafish/builder
+    commands:
+      - yarn
+      - yarn build
+      - ls
+      - rsync -ratlz --delete --rsh="/usr/bin/sshpass -p aaaa5451 ssh -o StrictHostKeyChecking=no -l root" ./dist/ root@192.169.0.174:/var/www/mainpagedev
+    depends_on:
+      - restore-cache
+    when:
+      branch:
+        - dev
+      event:
+        - push
+
+  - name: rebuild-cache
+    image: drillster/drone-volume-cache
+    volumes:
+      - name: cache
+        path: /cache
+    depends_on:
+      - build-dev
+      - build-test
+    settings:
+      rebuild: true
+      mount:
+        - ./node_modules
+
+  # - name: deploy-test1
+  #   image: appleboy/drone-ssh
+  #   settings:
+  #     host:
+  #       - '104.160.19.13'
+  #     username: root
+  #     password: SjPCH8kuZ9vxxnBk33nUVaU
+  #     port: 22
+  #     command_timeout: 2m
+  #     script:
+  #       - service nginx restart
+  #       - service nginx status
+  #   depends_on:
+  #     - build-test
+  #   when:
+  #     branch:
+  #       - main
+  #     event:
+  #       - push
+  - name: deploy-test2
+    image: appleboy/drone-ssh
+    settings:
+      host:
+        - '192.169.0.174'
+      username: root
+      password: aaaa5451
+      port: 22
+      command_timeout: 2m
+      script:
+        - service nginx restart
+        - service nginx status
+    depends_on:
+      - build-test
+    when:
+      branch:
+        - main
+      event:
+        - push
+
+  - name: deploy-dev
+    image: appleboy/drone-ssh
+    settings:
+      host:
+        - '192.169.0.174'
+      username: root
+      password: aaaa5451
+      port: 22
+      command_timeout: 2m
+      script:
+        - service nginx restart
+        - service nginx status
+    depends_on:
+      - build-dev
+    when:
+      branch:
+        - dev
+      event:
+        - push
+
+  - name: build-Done-send
+    image: plugins/webhook
+    ignore_error: true
+    depends_on:
+      - build-dev
+      - build-test
+    settings:
+      urls: https://open.feishu.cn/open-apis/bot/v2/hook/29518279-847e-4005-8267-f62b99952a0b
+      content_type: application/json
+      template:
+        msg_type: post
+        content:
+          post:
+            zh_cn:
+              title: |
+                build #${DRONE_BUILD_NUMBER} Done.
+              content:
+                - - { tag: a, text: 'build log', href: '${DRONE_BUILD_LINK}' }
+                - - {
+                      tag: a,
+                      text: '${DRONE_REPO_NAME}',
+                      href: '${DRONE_COMMIT_LINK}',
+                    }
+                  - { tag: a, text: /, href: '${DRONE_COMMIT_LINK}' }
+                  - {
+                      tag: a,
+                      text: '${DRONE_COMMIT_BRANCH}',
+                      href: '${DRONE_COMMIT_LINK}',
+                    }
+                - - { tag: text, text: 'result: ${DRONE_BUILD_STATUS}' }
+
+clone:
+  skip_verify: true
+volumes:
+  - name: cache
+    host:
+      path: /tmp/cache

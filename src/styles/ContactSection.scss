@@ -1,0 +1,122 @@
+@import '@/styles/mixins.scss';
+#ContactSection {
+  margin-top: 300px;
+  margin-bottom: 144px;
+
+  @media screen and (max-width: 550px) {
+    .left-header-title {
+      text-align: center;
+    }
+  }
+}
+
+.card-container {
+  height: 420px;
+  width: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  position: relative;
+  margin-top: 60px;
+
+  @media screen and (max-width: 550px) {
+    margin-top: 20px;
+    height: 282px;
+  }
+
+  button {
+    width: 300px;
+    height: 63px;
+    background: linear-gradient(93.58deg, #f2f2f2 0%, #e6e6e6 100%);
+    border-radius: 20px;
+    color: #1c1c1e;
+
+    @media screen and (max-width: 550px) {
+      margin-top: 64px;
+      width: 194px;
+      height: 42px;
+    }
+  }
+
+  .card_zeroheight {
+    height: 0;
+    overflow: visible;
+    backface-visibility: hidden;
+    transform: rotate3d(0, 0, 0);
+  }
+
+  .contact-card {
+    height: 420px;
+    background: linear-gradient(75.58deg, #003380 20.45%, #006180 89.54%);
+    border-radius: 30px;
+    padding: 105px 62px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @media screen and (max-width: 550px) {
+      padding: 30px 40px;
+      height: 282px;
+    }
+    .container-contact {
+      width: 100%;
+      display: flex;
+      button {
+        margin: 0 auto;
+      }
+    }
+    .v-form {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+
+  .back {
+    transform: rotateY(180deg);
+
+    button {
+      margin-top: 60px;
+
+      @media screen and (max-width: 550px) {
+        margin-top: 30px;
+      }
+    }
+
+    .contact-card {
+      padding: 65px 62px;
+
+      @media screen and (max-width: 550px) {
+        padding: 30px;
+        height: 440px;
+      }
+    }
+  }
+}
+
+.flipme {
+  transform: rotateY(180deg);
+}
+
+.basics {
+  display: flex;
+
+  @media screen and (max-width: 550px) {
+    flex-direction: column;
+  }
+
+  .v-field--variant-filled .v-field__overlay {
+    background-color: transparent !important;
+  }
+
+  .v-input {
+    margin-right: 50px;
+
+    @media screen and (max-width: 550px) {
+      margin-right: 0px;
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}

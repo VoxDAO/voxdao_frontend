@@ -1,9 +1,11 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig.json",
   "extends": "./tsconfig.app.json",
   "exclude": [],
   "compilerOptions": {
     "composite": true,
     "lib": [],
-    "types": ["node", "jsdom"]
+    "types": ["node", "jsdom"],
+    "allowJs": true
   }
 }
