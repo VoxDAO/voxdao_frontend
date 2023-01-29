@@ -21,28 +21,33 @@ import { RouterLink } from "vue-router";
         <nav class="max-lg:hidden text-center">
           <RouterLink
             class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
-            to="/about"
-            >Join Us</RouterLink
+            to="/"
+            >Homepage</RouterLink
           >
           <RouterLink
             class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
-            to="/about"
-            >Leekers NFT</RouterLink
+            to="/VoxWolrd"
+            >VOX world</RouterLink
           >
           <RouterLink
             class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
-            to="/about"
-            >Proposals</RouterLink
+            to="/MintNFT"
+            >Mint NFT</RouterLink
           >
           <RouterLink
             class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
-            to="/about"
-            >Events</RouterLink
+            to="/NFTfi"
+            >NFTfi</RouterLink
           >
           <RouterLink
             class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
-            to="/about"
-            >Connect Wallet</RouterLink
+            to="/CitizenForum"
+            >Citizen Forum</RouterLink
+          >
+          <RouterLink
+            class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
+            to="/EventPlaza"
+            >Event Plaza</RouterLink
           >
         </nav>
       </div>
