@@ -1692,15 +1692,15 @@
   resolved "https://registry.npmmirror.com/@vue/tsconfig/-/tsconfig-0.1.3.tgz#4a61dbd29783d01ddab504276dcf0c2b6988654f"
   integrity sha512-kQVsh8yyWPvHpb8gIc9l/HIDiiVUy1amynLNpCy8p+FoCiZXCo6fQos5/097MmnNZc9AtseDsCrfkhqCrJ8Olg==
 
-"@wagmi/chains@0.2.4":
-  version "0.2.4"
-  resolved "https://registry.npmmirror.com/@wagmi/chains/-/chains-0.2.4.tgz#7f90e64f42e614d9d324b5be2a6a49dfb0d39264"
-  integrity sha512-c2mJED5H9zHzpam2JSD76ln1UmrQShas5BAHA98FjSAHlqU41zWvUhOfm9mHMh8j2NCFJ+pGdQIlXFGs8Qe8cg==
+"@wagmi/chains@0.2.4-cjs":
+  version "0.2.4-cjs"
+  resolved "https://registry.npmmirror.com/@wagmi/chains/-/chains-0.2.4-cjs.tgz#c0c90c57bc066a46d443c50ae3600ac5873003c2"
+  integrity sha512-UC4s4Yy/fLOQt7HRsHNjbwYtM7ssOzd9D31yz7Jdx/tiXqu8W7SMBjTe1IbBgtGTb0OWAs/oVpHG+8s1N9W6DQ==
 
-"@wagmi/connectors@0.2.2":
-  version "0.2.2"
-  resolved "https://registry.npmmirror.com/@wagmi/connectors/-/connectors-0.2.2.tgz#13ffa65e2f93b5c83fe2ea5eb7e0480114979edc"
-  integrity sha512-Mbk0WVRpA5mLP5K2dSTzsCmBCRwTKg9I4TCRKQpXnUtw5+3waw+BVUPTm0aiWV/lEzzW+1F8gtUhlvK7I2Gj3Q==
+"@wagmi/connectors@0.2.2-cjs":
+  version "0.2.2-cjs"
+  resolved "https://registry.npmmirror.com/@wagmi/connectors/-/connectors-0.2.2-cjs.tgz#b435a2a15ed47d335aaea6221b32a89df92db436"
+  integrity sha512-2tHEP5hrvtWwrp607xHfN67wySyibPMw2HCqvPuCck7P9XEqdrudqkWj28t7qoulYOCk47BdC9KHHDFkcnH5RQ==
   dependencies:
     "@coinbase/wallet-sdk" "^3.5.4"
     "@ledgerhq/connect-kit-loader" "^1.0.1"
@@ -1710,13 +1710,13 @@
     abitype "^0.3.0"
     eventemitter3 "^4.0.7"
 
-"@wagmi/core@^0.9.0":
-  version "0.9.2"
-  resolved "https://registry.npmmirror.com/@wagmi/core/-/core-0.9.2.tgz#36b699ac974c3a216124c8544b313df18bffbae1"
-  integrity sha512-2WMuLtvtj484PlRlqKIiXOYneBLBn2pFES/7ku/9OboH1a3WkaISo03vPmNlh1bHIxJBtCLF5oJRRVbXeg90DA==
+"@wagmi/core@^0.9.2-cjs":
+  version "0.9.2-cjs"
+  resolved "https://registry.npmmirror.com/@wagmi/core/-/core-0.9.2-cjs.tgz#62b182b9a51d4b3d0db55daba931799862a6338d"
+  integrity sha512-vCZk5MFnCK+PzYj+r7jp+aOVSF4iSmlTa3QTUKPDmK94uCpXCayAFRjkuYEyXTV36JVZYqJnG9sNJcBCovtstw==
   dependencies:
-    "@wagmi/chains" "0.2.4"
-    "@wagmi/connectors" "0.2.2"
+    "@wagmi/chains" "0.2.4-cjs"
+    "@wagmi/connectors" "0.2.2-cjs"
     abitype "^0.3.0"
     eventemitter3 "^4.0.7"
     zustand "^4.3.1"

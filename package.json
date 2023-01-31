@@ -14,7 +14,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "@wagmi/core": "^0.9.0",
+    "@wagmi/core": "^0.9.2-cjs",
     "@web3modal/ethereum": "^2.0.0",
     "@web3modal/html": "^2.0.0",
     "ethers": "^5.7.2",
@@ -35,11 +35,10 @@
     "autoprefixer": "^10.4.13",
     "cypress": "^11.2.0",
     "eslint": "^8.33.0",
-    "eslint-plugin-cypress": "^2.12.1",
-    "eslint-plugin-vue": "^9.3.0",
     "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.25.2",
-    "vue-eslint-parser": "^7.11.0",
+    "eslint-plugin-vue": "^9.3.0",
     "jsdom": "^20.0.3",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.19",
@@ -50,6 +49,7 @@
     "typescript": "~4.7.4",
     "vite": "^3.2.4",
     "vitest": "^0.25.3",
+    "vue-eslint-parser": "^7.11.0",
     "vue-tsc": "^1.0.9"
   }
 }
