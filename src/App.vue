@@ -53,29 +53,8 @@ import { RouterLink } from "vue-router";
       </div>
     </div>
   </header>
-  <section class="max-w-full h-screen bg-red-900">
-    <div class="flex flex-col m-auto max-w-7xl h-full">
-      <div
-        class="h-1/2 flex justify-center items-center text-slate-200 text-5xl font-bold tracking-wider"
-      >
-        Make cryptocurrency distributed again!
-      </div>
-      <div class="flex justify-center items-center">
-        <button class="mx-10 px-6 py-3 bg-slate-200 font-bold">
-          Whitpaper
-        </button>
-        <button class="mx-10 px-6 py-3 bg-slate-200 font-bold">
-          Principles
-        </button>
-      </div>
-    </div>
+  <section class="max-w-full">
+    <router-view></router-view>
   </section>
 
-  <div class="flex flex-col m-auto max-w-7xl min-h-full">
-    <footer
-      class="h-[50rem] flex items-center font-bold justify-center text-5xl"
-    >
-      footer
-    </footer>
-  </div>
 </template>
