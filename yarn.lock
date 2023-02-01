@@ -7113,6 +7113,13 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
+vite-plugin-dynamic-import@^1.2.7:
+  version "1.2.7"
+  resolved "https://registry.npmmirror.com/vite-plugin-dynamic-import/-/vite-plugin-dynamic-import-1.2.7.tgz#d0bf7aef82edffe430fa0ecabc39f971784cff7b"
+  integrity sha512-n1fjBaYF8ByqORv7hpEaZQiQie8sNiWGU61DpYs+fgToGmzGIgThUI8BCnW3RICVK4gJC2sDNn7NK1RzTvRyEA==
+  dependencies:
+    fast-glob "^3.2.12"
+
 "vite@^3.0.0 || ^4.0.0":
   version "4.0.4"
   resolved "https://registry.npmmirror.com/vite/-/vite-4.0.4.tgz#4612ce0b47bbb233a887a54a4ae0c6e240a0da31"
