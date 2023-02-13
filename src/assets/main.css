@@ -13,7 +13,7 @@ html, body {
 
 @layer components {
     .nav-btn {
-        @apply hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full hover:text-slate-200 font-bold duration-200
+        @apply hover:bg-slate-700 py-2 mx-1 my-2 hover:rounded-full hover:text-slate-200 font-bold duration-200 flex justify-center items-center
     }
     .connect-wallet-btn {
         @apply px-5 py-3 m-3 bg-slate-700 text-slate-200 text-center font-bold rounded-md hover:bg-slate-900 duration-500

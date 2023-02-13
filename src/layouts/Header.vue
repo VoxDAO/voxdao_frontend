@@ -1,22 +1,25 @@
 <template>
   <header class="text-slate-900 grid grid-cols-12">
-    <RouterLink class="px-6 py-1 mx-2 col-start-3 col-end-5" to="/">
+    <RouterLink class="px-2 py-2 mx-2 col-start-3 col-end-5 flex justify-center items-center" to="/">
       <div class="flex items-center shrink-0">
         <h1 class="text-3xl">Vox DAO</h1>
       </div>
     </RouterLink>
-    <RouterLink
-      v-for="{url, title} in links"
-      class="nav-btn"
-      :to="url"
-    >{{ title }}
-    </RouterLink>
-    <button
-      class="nav-btn"
-      @click="openModal"
-    >
-      {{ title }}
-    </button>
+    <div class="col-start-5 col-end-11 grid grid-flow-col">
+      <RouterLink
+        v-for="{url, title} in links"
+        class="nav-btn"
+        :to="url"
+      >{{ title }}
+      </RouterLink>
+      <button
+        class="nav-btn"
+        @click="openModal"
+      >
+        {{ title }}
+      </button>
+    </div>
+    
   </header>
 </template>
 

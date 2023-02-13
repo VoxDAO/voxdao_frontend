@@ -3,9 +3,9 @@ import { defineStore } from 'pinia'
 import { configureChains, createClient } from '@wagmi/core'
 import { walletConnectProvider, modalConnectors, EthereumClient } from '@web3modal/ethereum'
 import { Web3Modal } from '@web3modal/html'
-import { arbitrum, mainnet, polygon } from '@wagmi/core/chains'
+import { mainnet } from '@wagmi/core/chains'
 
-const chains = ref([arbitrum, mainnet, polygon])
+const chains = ref([mainnet])
 
 const { provider } = configureChains(chains.value, [
   walletConnectProvider({ projectId: 'c97c09c9ab8e8cb07b774a20f1c6354a' }),

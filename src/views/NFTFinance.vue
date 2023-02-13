@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-col items-center justify-start h-full">
+  <div class="flex flex-col items-center justify-start">
     <h1 class="text-5xl text-center font-bold py-32">Claim $VOX</h1>
-    <p class="text-lg text-center text-slate-600 m-3">Please connect your wallet to verify your VOX NFT.</p>
     <template v-if="!isConnected">
+      <p class="text-lg text-center text-slate-600 m-3">Please connect your wallet to verify your VOX NFT.</p>
       <div class="flex flex-row items-center justify-center m-5">
         <div class="p-3 text-center">10,000 $VOX per NFT</div>
         <div class="p-3 text-center">Current liquidity 10,000,000</div>
@@ -11,7 +11,18 @@
       <button class="connect-wallet-btn" @click="handleClickConnectWalletBtn">{{ t('labels.connectWallet') }}, {{ counterStore.count }}</button>
     </template>
     <template v-if="isConnected">
-      Connected
+      <div class="w-[50%] grid grid-cols-5 grid-rows-2 gap-3 overflow-hidden">
+        <div class="h-[200px] bg-slate-700 text-slate-200 text-center shrink-0">placeholder</div>
+        <div class="h-[200px] bg-slate-700 text-slate-200 text-center shrink-0">placeholder</div>
+        <div class="h-[200px] bg-slate-700 text-slate-200 text-center shrink-0">placeholder</div>
+        <div class="h-[200px] bg-slate-700 text-slate-200 text-center shrink-0">placeholder</div>
+        <div class="h-[200px] bg-slate-700 text-slate-200 text-center shrink-0">placeholder</div>
+        <div class="h-[200px] bg-slate-700 text-slate-200 text-center shrink-0">placeholder</div>
+        <div class="h-[200px] bg-slate-700 text-slate-200 text-center shrink-0">placeholder</div>
+        <div class="h-[200px] bg-slate-700 text-slate-200 text-center shrink-0">placeholder</div>
+        <div class="h-[200px] bg-slate-700 text-slate-200 text-center shrink-0">placeholder</div>
+      </div>
+      <div class="connect-wallet-btn">Claim $VOX</div>
     </template>
   </div>
 </template>
