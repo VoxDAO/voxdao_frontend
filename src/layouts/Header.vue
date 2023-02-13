@@ -7,12 +7,12 @@
     </RouterLink>
     <RouterLink
       v-for="{url, title} in links"
-      class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full hover:text-slate-200 font-bold duration-200"
+      class="nav-btn"
       :to="url"
     >{{ title }}
     </RouterLink>
     <button
-      class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full hover:text-slate-200 font-bold"
+      class="nav-btn"
       @click="openModal"
     >
       {{ title }}
@@ -23,52 +23,22 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import {
-  configureChains,
-  createClient,
   fetchEnsName,
   watchAccount,
 } from '@wagmi/core'
-import { mainnet, polygon, arbitrum } from '@wagmi/core/chains'
-import { Web3Modal } from '@web3modal/html'
-import {
-  EthereumClient,
-  modalConnectors,
-  walletConnectProvider,
-} from '@web3modal/ethereum'
+
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useWalletStore } from '@/stores'
 
 const { t } = useI18n()
-const chains = [arbitrum, mainnet, polygon]
-
-// Wagmi Core Client
-const { provider } = configureChains(chains, [
-  walletConnectProvider({ projectId: 'c97c09c9ab8e8cb07b774a20f1c6354a' }),
-])
-const wagmiClient = createClient({
-  autoConnect: true,
-  connectors: modalConnectors({ appName: 'VOXDAO', chains }),
-  provider,
-})
-
-// Web3Modal and Ethereum Client
-const ethereumClient = new EthereumClient(wagmiClient, chains)
-const web3modal = new Web3Modal(
-  { projectId: 'c97c09c9ab8e8cb07b774a20f1c6354a' },
-  ethereumClient,
-)
-
-web3modal.setTheme({
-  themeMode: 'light',
-  themeBackground: 'gradient',
-})
+const { web3modal } = useWalletStore()
 
 function openModal() {
   web3modal.openModal()
 }
 
 const title = ref(t('labels.connectWallet'))
-
 watchAccount(async (account) => {
   const prefixal = (address: string) => (address.length >= 9 ? `${address.slice(0, 9)}...` : '')
   if (account.isConnected === true && account.address) {
