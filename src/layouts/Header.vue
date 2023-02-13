@@ -1,52 +1,22 @@
 <template>
-  <header class="text-slate-900 max-w-full">
-    <div class="flex m-auto max-w-7xl">
-      <RouterLink class="px-6 py-1 mx-2" to="/">
-        <div class="flex items-center shrink-0">
-          <h1 class="text-3xl">Vox DAO</h1>
-        </div>
-      </RouterLink>
-      <div class="flex items-center grow justify-end">
-        <nav class="max-lg:hidden text-center">
-          <RouterLink
-            class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
-            to="/"
-          >{{ t('buttons.homePage') }}
-          </RouterLink>
-          <RouterLink
-            class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
-            to="/about"
-          >{{ t('buttons.voxWorld') }}
-          </RouterLink>
-          <RouterLink
-            class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
-            to="/about"
-          >{{ t('buttons.mintNFT') }}
-          </RouterLink>
-          <RouterLink
-            class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
-            to="/nft-finance"
-          >{{ t('buttons.nftFinance') }}
-          </RouterLink>
-          <RouterLink
-            class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
-            to="/citizen-forum"
-          > {{ t('buttons.citizenForum') }}
-          </RouterLink>
-          <RouterLink
-            class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
-            to="/event-plaza"
-          >{{ t('buttons.eventPlaza') }}
-          </RouterLink>
-          <button
-            class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
-            @click="openModal"
-          >
-            {{ title }}
-          </button>
-        </nav>
+  <header class="text-slate-900 grid grid-cols-12">
+    <RouterLink class="px-6 py-1 mx-2 col-start-3 col-end-5" to="/">
+      <div class="flex items-center shrink-0">
+        <h1 class="text-3xl">Vox DAO</h1>
       </div>
-    </div>
+    </RouterLink>
+    <RouterLink
+      v-for="{url, title} in links"
+      class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full hover:text-slate-200 font-bold duration-200"
+      :to="url"
+    >{{ title }}
+    </RouterLink>
+    <button
+      class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full hover:text-slate-200 font-bold"
+      @click="openModal"
+    >
+      {{ title }}
+    </button>
   </header>
 </template>
 
@@ -111,4 +81,31 @@ watchAccount(async (account) => {
     title.value = t('labels.connectWallet')
   }
 })
+
+const links = ref([
+  {
+    title: t('buttons.homePage'),
+    url: '/',
+  },
+  {
+    title: t('buttons.voxWorld'),
+    url: '/about',
+  },
+  {
+    title: t('buttons.mintNFT'),
+    url: '/about',
+  },
+  {
+    title: t('buttons.nftFinance'),
+    url: '/nft-finance',
+  },
+  {
+    title: t('buttons.citizenForum'),
+    url: '/citizen-forum',
+  },
+  {
+    title: t('buttons.eventPlaza'),
+    url: '/event-plaza',
+  },
+])
 </script>
