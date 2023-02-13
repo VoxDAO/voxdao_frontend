@@ -24,6 +24,12 @@ const router = createRouter({
       name: 'event-plaza',
       component: () => import('../views/EventPlaza.vue'),
     },
+    {
+      path: '/event-plaza/:hash',
+      name: 'event-plaza-details',
+      component: () => import('../views/EventPlazaDetails.vue'),
+      props: route => ({ query: route.query.q }),
+    },
   ],
 })
 

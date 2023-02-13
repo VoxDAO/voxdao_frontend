@@ -1,0 +1,63 @@
+<template>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+  <div class="">Event Plaza Details Page</div>
+
+</template>
+<script setup lang="ts">
+
+</script>
