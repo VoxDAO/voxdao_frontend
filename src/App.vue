@@ -1,5 +1,60 @@
+<template>
+    <div class="grid overflow-y-hidden">
+        <header class="text-slate-900 sticky top-0 max-w-full">
+            <div class="flex m-auto max-w-7xl">
+                <RouterLink class="px-6 py-1 mx-2" to="/">
+                    <div class="flex items-center shrink-0">
+                        <h1 class="text-3xl">Vox DAO</h1>
+                    </div>
+                </RouterLink>
+                <div class="flex items-center grow justify-end">
+                    <nav class="max-lg:hidden text-center">
+                        <RouterLink
+                            class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
+                            to="/"
+                        >{{ t('buttons.homePage') }}
+                        </RouterLink>
+                        <RouterLink
+                            class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
+                            to="/about"
+                        >{{ t('buttons.voxWorld') }}
+                        </RouterLink>
+                        <RouterLink
+                            class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
+                            to="/about"
+                        >{{ t('buttons.mintNFT') }}
+                        </RouterLink>
+                        <RouterLink
+                            class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
+                            to="/nft-finance"
+                        >{{ t('buttons.nftFinance') }}
+                        </RouterLink>
+                        <RouterLink
+                            class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
+                            to="/citizen-forum"
+                        > {{ t('buttons.citizenForum') }}
+                        </RouterLink>
+                        <RouterLink
+                            class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
+                            to="/event-plaza"
+                        >{{ t('buttons.eventPlaza') }}
+                        </RouterLink>
+                        <button
+                            class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
+                            @click="openModal"
+                        >
+                            {{ title }}
+                        </button>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <router-view></router-view>
+    </div>
+</template>
+
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
+import { RouterLink, RouterView } from 'vue-router'
 import {
   configureChains,
   createClient,
@@ -14,7 +69,9 @@ import {
   walletConnectProvider,
 } from '@web3modal/ethereum'
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const chains = [arbitrum, mainnet, polygon]
 
 // Wagmi Core Client
@@ -23,7 +80,7 @@ const { provider } = configureChains(chains, [
 ])
 const wagmiClient = createClient({
   autoConnect: true,
-  connectors: modalConnectors({ appName: 'web3Modal', chains }),
+  connectors: modalConnectors({ appName: 'VOXDAO', chains }),
   provider,
 })
 
@@ -43,7 +100,7 @@ function openModal() {
   web3modal.openModal()
 }
 
-const title = ref('Connect Wallet')
+const title = ref(t('labels.connectWallet'))
 
 watchAccount(async (account) => {
   const prefixal = (address: string) => (address.length >= 9 ? `${address.slice(0, 9)}...` : '')
@@ -54,62 +111,7 @@ watchAccount(async (account) => {
     })
     title.value = ensName ?? prefixal(account.address)
   } else {
-    title.value = 'Connect Wallet'
+    title.value = t('labels.connectWallet')
   }
 })
 </script>
-
-<template>
-    <div class="grid">
-        <header class="text-slate-900 sticky top-0 max-w-full">
-            <div class="flex m-auto max-w-7xl">
-                <RouterLink class="px-6 py-1 mx-2" to="/">
-                    <div class="flex items-center shrink-0">
-                        <h1 class="text-3xl">Vox DAO</h1>
-                    </div>
-                </RouterLink>
-                <div class="flex items-center grow justify-end">
-                    <nav class="max-lg:hidden text-center">
-                        <RouterLink
-                            class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
-                            to="/"
-                        >Home Page
-                        </RouterLink>
-                        <RouterLink
-                            class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
-                            to="/about"
-                        >VOX World
-                        </RouterLink>
-                        <RouterLink
-                            class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
-                            to="/about"
-                        >Mint NFT
-                        </RouterLink>
-                        <RouterLink
-                            class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
-                            to="/about"
-                        >NFT Finance
-                        </RouterLink>
-                        <RouterLink
-                            class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
-                            to="/about"
-                        >Citizen Forum
-                        </RouterLink>
-                        <RouterLink
-                            class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
-                            to="/about"
-                        >Event Plaza
-                        </RouterLink>
-                        <button
-                            class="hover:bg-slate-700 px-6 py-2 mx-1 hover:rounded-full font-bold"
-                            @click="openModal"
-                        >
-                            {{ title }}
-                        </button>
-                    </nav>
-                </div>
-            </div>
-        </header>
-        <router-view></router-view>
-    </div>
-</template>
