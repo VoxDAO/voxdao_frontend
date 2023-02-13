@@ -77,8 +77,9 @@ module.exports = {
     '@typescript-eslint/ban-types': 'off',
     'class-methods-use-this': 'off',
     'no-return-await': 'off',
-    'vue/html-indent': ['error', 4],
+    'vue/html-indent': ['error', 2],
     'vue/html-self-closing': 'off',
+    'vue/multi-word-component-names': 'off',
     'vue/max-attributes-per-line': ['warn', {
       singleline: {
         max: 3,
