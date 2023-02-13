@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-slate-900 max-h-[100px] h-full text-slate-200 p-8 flex justify-center items-center">
+  <div class="bg-slate-900 text-slate-200 p-8 flex justify-center items-center">
     <div class="font-black m-2">{{ t('labels.faq') }}</div>
     <div class="font-black m-2">{{ t('labels.privacy') }}</div>
     <div class="font-black m-2">{{ t('labels.terms') }}</div>

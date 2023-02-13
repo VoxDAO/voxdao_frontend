@@ -62,11 +62,11 @@ const links = ref([
   },
   {
     title: t('buttons.voxWorld'),
-    url: '/about',
+    url: '/vox-world',
   },
   {
     title: t('buttons.mintNFT'),
-    url: '/about',
+    url: '/mint-nft',
   },
   {
     title: t('buttons.nftFinance'),

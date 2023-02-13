@@ -1,11 +1,13 @@
 <template>
-  <Header />
-  <router-view v-slot="{Component}">
-    <KeepAlive>
-      <component :is="Component" />
-    </KeepAlive>
-  </router-view>
-  <Footer />
+  <div class="grid grid-flow-row auto-rows-max grid-rows-[max-content_max-content_1fr] h-full">
+    <Header />
+    <router-view v-slot="{Component}">
+      <KeepAlive>
+        <component :is="Component" />
+      </KeepAlive>
+    </router-view>
+    <Footer />
+  </div>
 </template>
 
 <script setup lang="ts">

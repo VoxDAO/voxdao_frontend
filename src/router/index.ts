@@ -20,6 +20,14 @@ const router = createRouter({
       component: () => import('../views/CitizenForum.vue'),
     },
     {
+      path: '/vox-world',
+      component: () => import('../views/VOXWorld.vue'),
+    },
+    {
+      path: '/mint-nft',
+      component: () => import('../views/MintNFT.vue'),
+    },
+    {
       path: '/event-plaza',
       name: 'event-plaza',
       component: () => import('../views/EventPlaza.vue'),
