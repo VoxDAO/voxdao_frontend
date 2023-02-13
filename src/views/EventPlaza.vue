@@ -1,5 +1,5 @@
 <template>
-    <div>event plaza page</div>
+  <div>event plaza page</div>
 </template>
 
 <script setup lang="ts">

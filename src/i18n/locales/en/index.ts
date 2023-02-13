@@ -1,6 +1,9 @@
 export default {
   labels: {
     connectWallet: 'Connect Wallet',
+    faq: 'FAQ',
+    privacy: 'Privacy',
+    terms: 'Terms',
   },
   buttons: {
     homePage: 'Home Page',

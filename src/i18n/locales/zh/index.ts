@@ -1,6 +1,9 @@
 export default {
   labels: {
     connectWallet: '连接钱包',
+    faq: '常见问题',
+    privacy: '隐私',
+    terms: '条款',
   },
   buttons: {
     homePage: '首页',

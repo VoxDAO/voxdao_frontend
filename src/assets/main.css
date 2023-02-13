@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html, body {
+    scrollbar-gutter: stable;
+    height: 100vh;
+}
+
+#app {
+    height: 100%;
+}
