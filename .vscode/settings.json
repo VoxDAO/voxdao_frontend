@@ -1,6 +1,7 @@
 {
-    "editor.codeActionsOnSave": {
-        "source.fixAll": true,
-    },
-    "editor.minimap.enabled": false
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "editor.minimap.enabled": false,
+  "stylelint.validate": ["css", "less", "postcss", "vue"]
 }

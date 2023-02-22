@@ -1,27 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-html, body {
-    scrollbar-gutter: stable;
-    height: 100vh;
-}
-
-#app {
-    height: 100%;
-}
-
-@layer components {
-    .nav-btn {
-        @apply hover:bg-slate-700 py-2 mx-1 my-2 hover:rounded-full hover:text-slate-200 font-bold duration-200 flex justify-center items-center
-    }
-    .connect-wallet-btn {
-        @apply px-5 py-3 m-3 bg-slate-700 text-slate-200 text-center font-bold rounded-md hover:bg-slate-900 duration-500
-    }
-}
-
-.testbg {
-    background-color: #DCD9D4;
-    background-image: linear-gradient(to bottom, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.50) 100%), radial-gradient(at 50% 0%, rgba(255,255,255,0.10) 0%, rgba(0,0,0,0.50) 50%);
-    background-blend-mode: soft-light,screen;
-}

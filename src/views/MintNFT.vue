@@ -1,10 +1,13 @@
 <template>
   <div class="grid grid-cols-12 overflow-clip">
-    <div class="col-start-3 col-end-8 h-full flex flex-shrink-0 justify-center items-center">
+    <div
+      class="col-start-3 col-end-8 h-full flex flex-shrink-0 justify-center items-center"
+    >
       <div>dsaidojsaidsaj</div>
     </div>
-    <div class="testbg col-start-8 col-end-11 max-h-[80vh] overflow-y-scroll overscroll-y-contain flex flex-shrink-0 flex-col justify-start items-center">
-        
+    <div
+      class="testbg col-start-8 col-end-11 max-h-[80vh] overflow-y-scroll overscroll-y-contain flex flex-shrink-0 flex-col justify-start items-center"
+    >
       <SectionWrapper :title="t('labels.avatarShape')">
         <div class="h-[100px]">Content</div>
       </SectionWrapper>
@@ -49,9 +52,8 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-import SectionWrapper from '../components/SectionWrapper.vue'
+import { useI18n } from "vue-i18n";
+import SectionWrapper from "../components/SectionWrapper.vue";
 
-const { t } = useI18n()
-
+const { t } = useI18n();
 </script>

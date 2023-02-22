@@ -47,5 +47,4 @@
       <div>footer</div>
     </div>
   </section>
-
 </template>
