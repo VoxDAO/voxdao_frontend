@@ -5,17 +5,21 @@
         <h1 class="text-3xl">Vox DAO</h1>
       </div>
     </RouterLink>
-    <p class="menu-toggle" @click="toggleMenu"></p>
-
+    <div ref="toggleMenuBtn" class="menu-toggle" @click="toggleMenu">
+      <font-awesome-icon
+        :icon="isMenuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"
+      />
+    </div>
     <div :class="isMenuOpen ? 'menu-open menu' : 'menu'">
       <RouterLink
         v-for="{ url, title } in links"
         :key="title"
         :to="url"
-        class="sm:nav-btn"
+        class="menu-item"
+        @click="isToggleMenuBtnAvailable ? toggleMenu : null"
         >{{ title }}
       </RouterLink>
-      <button class="sm:nav-btn" @click="openModal">
+      <button class="menu-item connect-wallet-btn" @click="openModal">
         {{ title }}
       </button>
     </div>
@@ -37,11 +41,24 @@ function openModal() {
   web3modal.openModal();
 }
 
+const toggleMenuBtn = ref<HTMLDivElement | null>(null);
 const isMenuOpen = ref(false);
 function toggleMenu() {
+  console.error({ di: toggleMenuBtn?.value?.style });
+  if (toggleMenuBtn?.value?.getAttribute("display") === "none") {
+    isMenuOpen.value = false;
+    return;
+  }
   isMenuOpen.value = !isMenuOpen.value;
 }
 
+// default set to true as we think in mobile first.
+const isToggleMenuBtnAvailable = ref(true);
+window
+  .matchMedia("(min-width: 842px)")
+  .addEventListener("change", ({ matches }) => {
+    isToggleMenuBtnAvailable.value = matches === false;
+  });
 const title = ref(t("labels.connectWallet"));
 watchAccount(async (account) => {
   const prefixal = (address: string) =>
@@ -86,40 +103,88 @@ const links = ref([
 </script>
 
 <style lang="scss">
+$layout-breakpoint-small: 842px;
+
 .navbar {
+  padding: 0 10px;
   position: sticky;
   height: 68px;
   top: 0;
-  background: #e67171;
   display: flex;
   align-items: center;
+  background: #fff;
 
   .logo {
     flex-grow: 1;
+
+    @media (min-width: $layout-breakpoint-small) {
+      flex-grow: 0;
+    }
   }
 
   .menu-toggle {
-    width: 38px;
-    height: 38px;
-    background: red;
+    width: 28px;
+    height: 28px;
+    padding: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (min-width: $layout-breakpoint-small) {
+      display: none;
+    }
   }
-}
 
-.menu {
-  grid-auto-flow: row;
-  display: none;
-}
+  .menu {
+    grid-auto-flow: row;
+    display: none;
 
-.menu-open {
-  position: absolute;
-  top: 100%;
-  height: calc(100vh - 68px) !important;
-  right: 0;
-  left: 0;
-  background: red;
-  display: grid;
+    @media (min-width: $layout-breakpoint-small) {
+      display: grid;
+      grid-template-columns: 12;
+      grid-auto-flow: column;
+      place-content: flex-end;
+      flex-grow: 1;
+      margin-left: 20px;
+    }
+
+    .menu-item {
+      @media (min-width: $layout-breakpoint-small) {
+        padding: 8px;
+      }
+    }
+  }
+
+  .menu-open {
+    position: absolute;
+    top: 100%;
+    height: calc(100vh - 68px) !important;
+    right: 0;
+    left: 0;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    place-items: flex-start;
+
+    .menu-item {
+      width: 100%;
+      padding: 20px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      font-weight: bold;
+
+      @media (min-width: $layout-breakpoint-small) {
+        padding: 0;
+      }
+    }
+
+    .connect-wallet-btn {
+      color: green;
+      justify-content: center;
+    }
+  }
 }
 </style>
