@@ -16,7 +16,7 @@
         :key="title"
         :to="url"
         class="menu-item"
-        @click="isToggleMenuBtnAvailable ? toggleMenu : null"
+        @click="closeMenu"
         >{{ title }}
       </RouterLink>
       <button class="menu-item connect-wallet-btn" @click="openModal">
@@ -54,9 +54,19 @@ function toggleMenu() {
 
 // default set to true as we think in mobile first.
 const isToggleMenuBtnAvailable = ref(true);
+
+function closeMenu() {
+  if (isToggleMenuBtnAvailable.value === true) {
+    isMenuOpen.value = false;
+  }
+}
+
 window
-  .matchMedia("(min-width: 842px)")
+  .matchMedia("(min-width: 870px)")
   .addEventListener("change", ({ matches }) => {
+    if (matches === true) {
+      isMenuOpen.value = false;
+    }
     isToggleMenuBtnAvailable.value = matches === false;
   });
 const title = ref(t("labels.connectWallet"));
@@ -103,7 +113,7 @@ const links = ref([
 </script>
 
 <style lang="scss">
-$layout-breakpoint-small: 842px;
+$layout-breakpoint-small: 870px;
 
 .navbar {
   padding: 0 10px;

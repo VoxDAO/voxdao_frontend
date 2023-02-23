@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid grid-flow-row auto-rows-max grid-rows-[max-content_max-content_1fr] h-full max-w-[2000px] m-auto"
+    class="grid grid-flow-row grid-rows-[max-content_max-content_1fr] h-full max-w-[2000px] m-auto"
   >
     <Header />
     <router-view v-slot="{ Component }">
