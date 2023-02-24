@@ -47,7 +47,7 @@ module.exports = {
     "import/no-unresolved": "off",
     "arrow-parens": "error",
     eqeqeq: "error",
-    "no-param-reassign": "error",
+    "no-param-reassign": "warn",
     "no-use-before-define": "error",
     "no-continue": "error",
     "prefer-destructuring": "warn",
