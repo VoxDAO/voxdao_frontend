@@ -1,4 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { toast } from "vue3-toastify";
+
+const clickJoinUsBtn = () => {
+  toast("hahaha");
+};
+</script>
 
 <template>
   <section class="max-w-full h-screen">
@@ -27,7 +33,7 @@
         </div>
       </div>
       <!-- Join us floating button -->
-      <button>Join Us</button>
+      <button @click="clickJoinUsBtn">Join Us</button>
       <!-- video view -->
       <div></div>
       <!-- overview -->

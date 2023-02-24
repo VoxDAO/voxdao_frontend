@@ -8,6 +8,9 @@ import i18n from "./i18n";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import Vue3Toasity, { type ToastContainerOptions } from "vue3-toastify";
+
+import "vue3-toastify/dist/index.css";
 
 library.add(fas);
 
@@ -16,6 +19,7 @@ const app = createApp(App);
 // eslint-disable-next-line vue/component-definition-name-casing
 app.component("font-awesome-icon", FontAwesomeIcon);
 
+app.use(Vue3Toasity, { autoClose: 3000 } as ToastContainerOptions);
 app.use(createPinia());
 app.use(router);
 app.use(i18n);
