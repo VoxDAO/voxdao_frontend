@@ -2,7 +2,7 @@
   <header class="navbar">
     <RouterLink class="logo" to="/">
       <div class="flex items-center shrink-0">
-        <h1 class="text-3xl">Vox DAO</h1>
+        <h1 class="logo-font">VOX DAO</h1>
       </div>
     </RouterLink>
     <div ref="toggleMenuBtn" class="menu-toggle" @click="toggleMenu">
@@ -20,7 +20,7 @@
         >{{ title }}
       </RouterLink>
       <button class="menu-item connect-wallet-btn" @click="openModal">
-        {{ title }}
+        {{ walletStore.isWeb3Initialized ? connBtnTitle : "loading..." }}
       </button>
     </div>
   </header>
@@ -30,21 +30,21 @@
 import { RouterLink } from "vue-router";
 import { fetchEnsName, watchAccount } from "@wagmi/core";
 
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useI18n } from "vue-i18n";
 import { useWalletStore } from "@/stores";
 
 const { t } = useI18n();
-const { web3modal } = useWalletStore();
+const walletStore = useWalletStore();
 
 function openModal() {
-  web3modal.openModal();
+  console.error({ walletStore });
+  walletStore.web3modal?.openModal();
 }
 
 const toggleMenuBtn = ref<HTMLDivElement | null>(null);
 const isMenuOpen = ref(false);
 function toggleMenu() {
-  console.error({ di: toggleMenuBtn?.value?.style });
   if (toggleMenuBtn?.value?.getAttribute("display") === "none") {
     isMenuOpen.value = false;
     return;
@@ -54,7 +54,6 @@ function toggleMenu() {
 
 // default set to true as we think in mobile first.
 const isToggleMenuBtnAvailable = ref(true);
-
 function closeMenu() {
   if (isToggleMenuBtnAvailable.value === true) {
     isMenuOpen.value = false;
@@ -69,19 +68,23 @@ window
     }
     isToggleMenuBtnAvailable.value = matches === false;
   });
-const title = ref(t("labels.connectWallet"));
-watchAccount(async (account) => {
-  const prefixal = (address: string) =>
-    address.length >= 9 ? `${address.slice(0, 9)}...` : "";
-  if (account.isConnected === true && account.address) {
-    title.value = prefixal(account.address);
-    const ensName = await fetchEnsName({
-      address: account.address,
-    });
-    title.value = ensName ?? prefixal(account.address);
-  } else {
-    title.value = t("labels.connectWallet");
-  }
+const connBtnTitle = ref(t("labels.connectWallet"));
+
+onMounted(async () => {
+  await walletStore.initWeb3Wallet();
+  watchAccount(async (account) => {
+    const prefixal = (address: string) =>
+      address.length >= 9 ? `${address.slice(0, 9)}...` : "";
+    if (account.isConnected === true && account.address) {
+      connBtnTitle.value = prefixal(account.address);
+      const ensName = await fetchEnsName({
+        address: account.address,
+      });
+      connBtnTitle.value = ensName ?? prefixal(account.address);
+    } else {
+      connBtnTitle.value = t("labels.connectWallet");
+    }
+  });
 });
 
 const links = ref([
@@ -129,6 +132,11 @@ $layout-breakpoint-small: 870px;
 
     @media (min-width: $layout-breakpoint-small) {
       flex-grow: 0;
+    }
+
+    .logo-font {
+      font-weight: bold;
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
     }
   }
 
