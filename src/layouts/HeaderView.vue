@@ -30,9 +30,10 @@
 import { RouterLink } from "vue-router";
 import { fetchEnsName, watchAccount } from "@wagmi/core";
 
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import { useWalletStore } from "@/stores";
+import { useWeb3Account } from "@/hooks";
 
 const { t } = useI18n();
 const walletStore = useWalletStore();
@@ -70,21 +71,21 @@ window
   });
 const connBtnTitle = ref(t("labels.connectWallet"));
 
-onMounted(async () => {
-  await walletStore.initWeb3Wallet();
-  watchAccount(async (account) => {
-    const prefixal = (address: string) =>
-      address.length >= 9 ? `${address.slice(0, 9)}...` : "";
-    if (account.isConnected === true && account.address) {
-      connBtnTitle.value = prefixal(account.address);
-      const ensName = await fetchEnsName({
-        address: account.address,
-      });
-      connBtnTitle.value = ensName ?? prefixal(account.address);
-    } else {
-      connBtnTitle.value = t("labels.connectWallet");
-    }
-  });
+const web3Account = useWeb3Account();
+
+watch(web3Account.account, async (account) => {
+  const prefixal = (address: string) =>
+    address.length >= 9 ? `${address.slice(0, 9)}...` : "";
+  if (account?.isConnected === true && account.address) {
+    connBtnTitle.value = prefixal(account.address);
+    const ensName = await fetchEnsName({
+      address: account.address,
+    });
+    console.error({ m: "fetch ensName result:", ensName });
+    connBtnTitle.value = ensName ?? prefixal(account.address);
+  } else {
+    connBtnTitle.value = t("labels.connectWallet");
+  }
 });
 
 const links = ref([

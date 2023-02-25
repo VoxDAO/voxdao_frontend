@@ -1,6 +1,4 @@
 /* eslint-disable no-param-reassign */
-import { ref, type ComponentInternalInstance, type Ref } from "vue";
-
 import { defineStore } from "pinia";
 import { configureChains, createClient } from "@wagmi/core";
 import { modalConnectors, EthereumClient } from "@web3modal/ethereum";
@@ -11,9 +9,12 @@ import { alchemyProvider } from "@wagmi/core/providers/alchemy";
 const walletconnectProjectId = "c97c09c9ab8e8cb07b774a20f1c6354a";
 const alchemyProviderApiKey = "lFMRROFLt_GqXfNzhtJt3MPIYj3LeUTL";
 
+type Readonly<T> = {
+  +readonly [P in keyof T]: T[P];
+};
 export interface WalletStoreState {
   chains: Chain[];
-  wagmiClient: any | null;
+  wagmiClient: Readonly<ReturnType<typeof createClient>> | null;
   ethereumClient: EthereumClient | null;
   web3modal: Web3Modal | null;
 }
@@ -45,7 +46,7 @@ export default defineStore({
           chains: this.chains,
         }),
         provider,
-      });
+      }) as Readonly<ReturnType<typeof createClient>>;
 
       this.ethereumClient = new EthereumClient(this.wagmiClient, this.chains);
 
