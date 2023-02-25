@@ -6,4 +6,5 @@ body,
 html,
 #app {
   scrollbar-gutter: stable;
+  height: 100vh;
 }

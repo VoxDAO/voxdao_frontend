@@ -28,9 +28,9 @@
 
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
-import { fetchEnsName, watchAccount } from "@wagmi/core";
+import { fetchEnsName } from "@wagmi/core";
 
-import { onMounted, ref, watch } from "vue";
+import { ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import { useWalletStore } from "@/stores";
 import { useWeb3Account } from "@/hooks";
@@ -72,7 +72,6 @@ window
 const connBtnTitle = ref(t("labels.connectWallet"));
 
 const web3Account = useWeb3Account();
-
 watch(web3Account.account, async (account) => {
   const prefixal = (address: string) =>
     address.length >= 9 ? `${address.slice(0, 9)}...` : "";
@@ -81,7 +80,6 @@ watch(web3Account.account, async (account) => {
     const ensName = await fetchEnsName({
       address: account.address,
     });
-    console.error({ m: "fetch ensName result:", ensName });
     connBtnTitle.value = ensName ?? prefixal(account.address);
   } else {
     connBtnTitle.value = t("labels.connectWallet");
