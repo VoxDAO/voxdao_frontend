@@ -16,8 +16,7 @@ library.add(fas);
 
 const app = createApp(App);
 
-// eslint-disable-next-line vue/component-definition-name-casing
-app.component("font-awesome-icon", FontAwesomeIcon);
+app.component("FontAwesomeIcon", FontAwesomeIcon);
 
 app.use(Vue3Toasity, { autoClose: 3000 } as ToastContainerOptions);
 app.use(createPinia());

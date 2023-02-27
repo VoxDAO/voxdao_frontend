@@ -6,7 +6,7 @@
       </div>
     </RouterLink>
     <div ref="toggleMenuBtn" class="menu-toggle" @click="toggleMenu">
-      <font-awesome-icon
+      <FontAwesomeIcon
         :icon="isMenuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"
       />
     </div>
@@ -34,6 +34,7 @@ import { ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import { useWalletStore } from "@/stores";
 import { useWeb3Account } from "@/hooks";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 const { t } = useI18n();
 const walletStore = useWalletStore();
